@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PersonelTemperatureHandlingFunction/.vs/PersonelTemperatureHandlingFunction
+/PersonelTemperatureHandlingFunction/ThemoDataMessageProcessor/bin
+/PersonelTemperatureHandlingFunction/ThemoDataMessageProcessor/obj
+/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/bin/Debug/netcoreapp3.1
+/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/obj/Debug/netcoreapp3.1
+/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/obj/Release/netcoreapp3.1
+/PersonelTemperatureHandlingFunction/ThermoDataModel/bin
+/PersonelTemperatureHandlingFunction/ThermoDataModel/obj/Debug/netstandard2.0
+/PersonelTemperatureHandlingFunction/ThermoDataModel/obj/Release/netstandard2.0
+/PersonelTemperatureHandlingFunction/PersonelTemperatureHandlingFunction/Properties
+/PersonelTemperatureHandlingFunction/ThermoDataModel/obj

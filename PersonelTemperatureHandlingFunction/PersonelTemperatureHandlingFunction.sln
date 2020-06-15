@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemoDataMessageProcessor",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataMessageProcessor.Unit.Tests", "ThermoDataMessageProcessor.Unit.Tests\ThermoDataMessageProcessor.Unit.Tests.csproj", "{51CD9875-3461-4B45-9BA4-C60584356A0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemoDataModel", "ThemoDataModel\ThemoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataModel", "ThermoDataModel\ThermoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

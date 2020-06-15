@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonelTemperatureHandlingFunction", "PersonelTemperatureHandlingFunction\PersonelTemperatureHandlingFunction.csproj", "{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemoDataMessageProcessor", "ThemoDataMessageProcessor\ThemoDataMessageProcessor.csproj", "{ADCC7FC7-7FD0-4442-B665-04383AC35394}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataMessageProcessor.Unit.Tests", "ThermoDataMessageProcessor.Unit.Tests\ThermoDataMessageProcessor.Unit.Tests.csproj", "{51CD9875-3461-4B45-9BA4-C60584356A0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemoDataModel", "ThemoDataModel\ThemoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5650CBF3-A0BE-42F7-92B5-3E95619B2871}
+	EndGlobalSection
+EndGlobal

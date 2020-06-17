@@ -11,7 +11,7 @@ namespace ThemoDataMessageProcessor.DataProcessor
         private IDataProcesor ds = new DataStoreMessageProcessor();
         private IDataProcesor ns = new NotificationMessageProcessor();
 
-        public MessageController(ILogger<MessageController> logger)
+        public MessageController(ILogger logger)
         {
             _logger = logger;
         }

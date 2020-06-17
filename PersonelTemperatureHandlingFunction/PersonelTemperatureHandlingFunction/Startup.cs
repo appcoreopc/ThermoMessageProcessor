@@ -16,7 +16,7 @@ namespace PersonelTemperatureHandlingFunction
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddLogging();
-           // builder.Services.AddSingleton<IMessageController, MessageController>();
+            builder.Services.AddSingleton<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
             
             //builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.("SchoolContext")));

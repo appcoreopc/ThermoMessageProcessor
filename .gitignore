@@ -13,3 +13,7 @@
 /PersonelTemperatureHandlingFunction/ThermoDataModel/obj/Release/netstandard2.0
 /PersonelTemperatureHandlingFunction/PersonelTemperatureHandlingFunction/Properties
 /PersonelTemperatureHandlingFunction/ThermoDataModel/obj
+/PersonelTemperatureHandlingFunction/ThermoDataMessageSender/Properties/PublishProfiles
+/PersonelTemperatureHandlingFunction/ThermoDataStore/bin
+/PersonelTemperatureHandlingFunction/ThermoDataStore/obj/Debug/netstandard2.0
+/PersonelTemperatureHandlingFunction/ThermoDataStore/obj/Release/netstandard2.0

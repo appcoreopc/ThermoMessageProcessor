@@ -16,12 +16,12 @@ namespace PersonelTemperatureHandlingFunction
             this._logger = logger;
         }
 
-        [FunctionName("PersonelThermoFunction_i")]
+        [FunctionName("PersonelThermoFunction_k")]
         public async Task Run([ServiceBusTrigger("devsbqbank", 
             Connection = "sbqconnection")]string messageSource, ILogger log)
         {
-            log.LogInformation($"function logger(i): {messageSource}");
-            this._logger.LogInformation($"injected logger(i): {messageSource}");
+            log.LogInformation($"function logger(j): {messageSource}");
+            this._logger.LogInformation($"injected logger(k): {messageSource}");
             await this._messsageThermoProcessor.ProcessMessage(messageSource);
         }
     }

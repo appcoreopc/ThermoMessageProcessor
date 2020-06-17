@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ThemoDataModel\ThermoDataModel.csproj" />
+    <ProjectReference Include="..\ThermoDataModel\ThermoDataModel.csproj" />
   </ItemGroup>
 
 </Project>

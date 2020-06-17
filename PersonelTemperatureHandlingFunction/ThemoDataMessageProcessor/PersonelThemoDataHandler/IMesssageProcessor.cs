@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Threading.Tasks;
 
 namespace ThemoDataMessageProcessor.PersonelThemoDataHandler
 {
     public interface IMesssageThermoProcessor
     {
-        T ProcessMessage<T>(string message);
+        Task ProcessMessage(string message);
     }
 }

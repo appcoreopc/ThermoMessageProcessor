@@ -8,13 +8,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.Azure.ServiceBus;
+using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 
 namespace ThermoDataMessageSender
 {
-    public static class Function1
+    public  class Function1
     {
+        private readonly IMesssageThermoProcessor _messsageThermoProcessor;
+        private readonly ILogger<Function1> _logger;
+
+        public Function1(ILogger<Function1> logger, IMesssageThermoProcessor messsageThermoProcessor)
+        {
+            this._messsageThermoProcessor = messsageThermoProcessor;
+            this._logger = logger;
+        }
+
         [FunctionName("MessageSender")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
@@ -40,8 +50,6 @@ namespace ThermoDataMessageSender
                 log.LogInformation($"Sending:i {d.Name}");
 
             }
-
-
 
             return new OkObjectResult($"Sent {DateTime.Now}.");
         }

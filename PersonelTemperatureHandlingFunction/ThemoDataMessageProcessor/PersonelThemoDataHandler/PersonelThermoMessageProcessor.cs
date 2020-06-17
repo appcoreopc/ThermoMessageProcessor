@@ -9,10 +9,10 @@ namespace ThemoDataMessageProcessor.PersonelThemoDataHandler
 {
     public class PersonelThermoMessageProcessor : IMesssageThermoProcessor
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<PersonelThermoMessageProcessor> _logger;
         private readonly IMessageController _messageController;
 
-        public PersonelThermoMessageProcessor(ILogger logger,
+        public PersonelThermoMessageProcessor(ILogger<PersonelThermoMessageProcessor> logger,
           IMessageController messageController)
         {
             _logger = logger;

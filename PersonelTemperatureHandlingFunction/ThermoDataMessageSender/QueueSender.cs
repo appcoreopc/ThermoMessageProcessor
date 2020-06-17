@@ -8,6 +8,7 @@ namespace ThermoDataMessageSender
 {
     class QueueMessageSender
     {
+
         private readonly IQueueClient _queueClient;
 
         public QueueMessageSender(IQueueClient queueClient)

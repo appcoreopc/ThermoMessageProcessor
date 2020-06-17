@@ -1,14 +1,11 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 using ThemoDataMessageProcessor.DataProcessor;
-using Microsoft.EntityFrameworkCore;
-using ThermoDataStore;
-using Microsoft.Extensions.Configuration;
+using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 
-[assembly: FunctionsStartup(typeof(PersonelTemperatureHandlingFunction.Startup))]
+[assembly: FunctionsStartup(typeof(ThermoDataMessageSender.Startup))]
 
-namespace PersonelTemperatureHandlingFunction
+namespace ThermoDataMessageSender
 {
     public class Startup : FunctionsStartup
     {

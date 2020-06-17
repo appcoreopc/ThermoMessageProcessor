@@ -7,11 +7,11 @@ namespace ThemoDataMessageProcessor.DataProcessor
 {
     public class MessageController : IMessageController
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<MessageController> _logger;
         private IDataProcesor ds = new DataStoreMessageProcessor();
         private IDataProcesor ns = new NotificationMessageProcessor();
 
-        public MessageController(ILogger logger)
+        public MessageController(ILogger<MessageController> logger)
         {
             _logger = logger;
         }

@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+    <UserSecretsId>bb0846fd-3d4d-4a33-a5c5-a1985ca287fd</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
@@ -10,6 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThemoDataMessageProcessor\ThemoDataMessageProcessor.csproj" />
+    <ProjectReference Include="..\ThermoDataModel\ThermoDataModel.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

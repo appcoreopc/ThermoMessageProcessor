@@ -1,26 +1,30 @@
-using System;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 
+
 namespace PersonelTemperatureHandlingFunction
 {
-    public static class PersonelTemperatureHandlingFunction
+    public class PersonelTemperatureHandlingFunction
     {
-        //ßprivate readonly IMesssageThermoProcessor _messsageThermoProcessor;
+        //private readonly IMesssageThermoProcessor _messsageThermoProcessor;
         //public PersonelTemperatureHandlingFunction(IMesssageThermoProcessor messsageThermoProcessor)
         //{
         //    this._messsageThermoProcessor = messsageThermoProcessor;
         //}
 
+        public PersonelTemperatureHandlingFunction()
+        {
+            //this._messsageThermoProcessor = messsageThermoProcessor;
+        }
+
         [FunctionName("PersonelThermoFunction")]
-        public  static void Run([ServiceBusTrigger("devsbqbank", 
+        public static void Run([ServiceBusTrigger("devsbqbank", 
             Connection = "sbqconnection")]string messageSource, 
             ILogger log)
         {
-
-            log.LogInformation($"{messageSource}");
+            _ = new PersonelThermoMessageProcessor(log).ProcessMessage(messageSource);
+            log.LogInformation("v2 : PersonelThermoFunction");
         }
     }
 }

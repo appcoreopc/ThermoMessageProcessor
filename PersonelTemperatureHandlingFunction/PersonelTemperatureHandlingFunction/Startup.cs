@@ -12,13 +12,25 @@ namespace PersonelTemperatureHandlingFunction
 {
     public class Startup : FunctionsStartup
     {
+        public Startup()
+        {
+
+        }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddLogging();
             builder.Services.AddSingleton<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
             
-            //builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.("SchoolContext")));
+            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("")));
         }
     }
 }

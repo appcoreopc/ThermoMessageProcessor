@@ -20,7 +20,7 @@ namespace PersonelTemperatureHandlingFunction
         public async Task Run([ServiceBusTrigger("devsbqbank", 
             Connection = "sbqconnection")]string messageSource, ILogger log)
         {
-            this._logger.LogInformation($"injected logger(l): {messageSource}");
+            this._logger.LogInformation($"PersonelThermoFunction logger(l): {messageSource}");
             await this._messsageThermoProcessor.ProcessMessage(messageSource);
         }
     }

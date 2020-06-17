@@ -18,7 +18,7 @@ namespace ThemoDataMessageProcessor.DataProcessor
 
         public Task ProcessDataAsync(PersonelThermoDataModel sourceData)
         {
-            this._logger.LogInformation($"MessageController : {DateTime.Now}");
+            this._logger.LogInformation($"MessageController source : {DateTime.Now}");
 
             // Save to database 
 

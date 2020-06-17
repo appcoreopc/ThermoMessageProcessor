@@ -2,6 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 using ThemoDataMessageProcessor.DataProcessor;
+using Microsoft.EntityFrameworkCore;
+using ThermoDataStore;
+using Microsoft.Extensions.Configuration;
+
 
 [assembly: FunctionsStartup(typeof(PersonelTemperatureHandlingFunction.Startup))]
 
@@ -12,8 +16,10 @@ namespace PersonelTemperatureHandlingFunction
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddLogging();
-            builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
-            builder.Services.AddTransient<IMessageController, MessageController>();
+            builder.Services.AddSingleton<IMessageController, MessageController>();
+            builder.Services.AddSingleton<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
+            
+            //builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.("SchoolContext")));
         }
     }
 }

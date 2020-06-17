@@ -8,10 +8,13 @@
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.ServiceBus" Version="4.1.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThemoDataMessageProcessor\ThemoDataMessageProcessor.csproj" />
+    <ProjectReference Include="..\ThemoDataMessageProcessor\ThermoDataMessageProcessor.csproj" />
     <ProjectReference Include="..\ThermoDataModel\ThermoDataModel.csproj" />
+    <ProjectReference Include="..\ThermoDataStore\ThermoDataStore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

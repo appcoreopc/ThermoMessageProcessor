@@ -1,30 +1,28 @@
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 using ThemoDataMessageProcessor.PersonelThemoDataHandler;
-
 
 namespace PersonelTemperatureHandlingFunction
 {
     public class PersonelTemperatureHandlingFunction
     {
-        //private readonly IMesssageThermoProcessor _messsageThermoProcessor;
-        //public PersonelTemperatureHandlingFunction(IMesssageThermoProcessor messsageThermoProcessor)
-        //{
-        //    this._messsageThermoProcessor = messsageThermoProcessor;
-        //}
+        private readonly IMesssageThermoProcessor _messsageThermoProcessor;
+        private readonly ILogger<PersonelTemperatureHandlingFunction> _logger;
 
-        public PersonelTemperatureHandlingFunction()
+        public PersonelTemperatureHandlingFunction(ILogger<PersonelTemperatureHandlingFunction> logger, IMesssageThermoProcessor messsageThermoProcessor)
         {
-            //this._messsageThermoProcessor = messsageThermoProcessor;
+            this._messsageThermoProcessor = messsageThermoProcessor;
+            this._logger = logger;
         }
 
-        [FunctionName("PersonelThermoFunction")]
-        public static void Run([ServiceBusTrigger("devsbqbank", 
-            Connection = "sbqconnection")]string messageSource, 
-            ILogger log)
+        [FunctionName("PersonelThermoFunction_i")]
+        public async Task Run([ServiceBusTrigger("devsbqbank", 
+            Connection = "sbqconnection")]string messageSource, ILogger log)
         {
-            _ = new PersonelThermoMessageProcessor(log).ProcessMessage(messageSource);
-            log.LogInformation("v2 : PersonelThermoFunction");
+            log.LogInformation($"function logger(i): {messageSource}");
+            this._logger.LogInformation($"injected logger(i): {messageSource}");
+            await this._messsageThermoProcessor.ProcessMessage(messageSource);
         }
     }
 }

@@ -7,6 +7,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj" />
+    <ProjectReference Include="..\AzCloudApp.MessageProcessor.Core.ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj" />
   </ItemGroup>
 </Project>

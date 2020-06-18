@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Function", "PersonelTemperatureHandlingFunction\AzCloudApp.MessageProcessor.Function.csproj", "{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core", "AzCloudApp.MessageProcessor.Core\AzCloudApp.MessageProcessor.Core.csproj", "{76F20513-7757-4C9C-B9D2-D141207BB94F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core", "ThemoDataMessageProcessor\AzCloudApp.MessageProcessor.Core.csproj", "{ADCC7FC7-7FD0-4442-B665-04383AC35394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.MessageSenderFunction", "AzCloudApp.MessageProcessor.Core.MessageSenderFunction\AzCloudApp.MessageProcessor.Core.MessageSenderFunction.csproj", "{39BE510C-9A86-4CF2-9323-B6C1DEB49EEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Unit.Tests", "ThermoDataMessageProcessor.Unit.Tests\AzCloudApp.MessageProcessor.Core.Unit.Tests.csproj", "{51CD9875-3461-4B45-9BA4-C60584356A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Thermo.DataStore", "AzCloudApp.MessageProcessor.Core.Thermo.DataStore\AzCloudApp.MessageProcessor.Core.Thermo.DataStore.csproj", "{8F8FFEBE-4B65-4871-AA88-E53CB754B0F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.ThermoDataModel", "ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.ThermoDataModel", "AzCloudApp.MessageProcessor.Core.ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj", "{73AE9A2C-EF6E-4DF3-B1C5-4363A8AF6EF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Thermo.DataStore", "ThermoDataStore\AzCloudApp.MessageProcessor.Core.Thermo.DataStore.csproj", "{8D1736F9-3785-4DFE-9703-FD3461C80F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Unit.Tests", "AzCloudApp.MessageProcessor.Core.Unit.Tests\AzCloudApp.MessageProcessor.Core.Unit.Tests.csproj", "{83913A75-3B28-4E8E-B9C3-A5B3A3C09542}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.MessageSenderFunction", "ThermoDataMessageSender\AzCloudApp.MessageProcessor.Core.MessageSenderFunction.csproj", "{78DE8B8D-5312-4072-860E-0F360CE5DBA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Function", "AzCloudApp.MessageProcessor.Function\AzCloudApp.MessageProcessor.Function.csproj", "{3D768A0A-121B-4A16-96C8-D9A3A300F433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,30 +21,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADCC7FC7-7FD0-4442-B665-04383AC35394}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51CD9875-3461-4B45-9BA4-C60584356A0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7384F270-7192-4EFD-90FC-78F617BCBB44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D1736F9-3785-4DFE-9703-FD3461C80F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D1736F9-3785-4DFE-9703-FD3461C80F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D1736F9-3785-4DFE-9703-FD3461C80F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D1736F9-3785-4DFE-9703-FD3461C80F4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78DE8B8D-5312-4072-860E-0F360CE5DBA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78DE8B8D-5312-4072-860E-0F360CE5DBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78DE8B8D-5312-4072-860E-0F360CE5DBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78DE8B8D-5312-4072-860E-0F360CE5DBA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76F20513-7757-4C9C-B9D2-D141207BB94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76F20513-7757-4C9C-B9D2-D141207BB94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76F20513-7757-4C9C-B9D2-D141207BB94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76F20513-7757-4C9C-B9D2-D141207BB94F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39BE510C-9A86-4CF2-9323-B6C1DEB49EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39BE510C-9A86-4CF2-9323-B6C1DEB49EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39BE510C-9A86-4CF2-9323-B6C1DEB49EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39BE510C-9A86-4CF2-9323-B6C1DEB49EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8FFEBE-4B65-4871-AA88-E53CB754B0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8FFEBE-4B65-4871-AA88-E53CB754B0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8FFEBE-4B65-4871-AA88-E53CB754B0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8FFEBE-4B65-4871-AA88-E53CB754B0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73AE9A2C-EF6E-4DF3-B1C5-4363A8AF6EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73AE9A2C-EF6E-4DF3-B1C5-4363A8AF6EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73AE9A2C-EF6E-4DF3-B1C5-4363A8AF6EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73AE9A2C-EF6E-4DF3-B1C5-4363A8AF6EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83913A75-3B28-4E8E-B9C3-A5B3A3C09542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83913A75-3B28-4E8E-B9C3-A5B3A3C09542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83913A75-3B28-4E8E-B9C3-A5B3A3C09542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83913A75-3B28-4E8E-B9C3-A5B3A3C09542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D768A0A-121B-4A16-96C8-D9A3A300F433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D768A0A-121B-4A16-96C8-D9A3A300F433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D768A0A-121B-4A16-96C8-D9A3A300F433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D768A0A-121B-4A16-96C8-D9A3A300F433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,24 +1,33 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 using ThemoDataModel;
 
 namespace ThemoDataMessageProcessor.DataProcessor
 {
-    class DataStoreMessageProcessor : IDataProcesor
+    public class DataStoreMessageProcessor : IDataStoreProcesor
     {
-
+        //private Logger<DataStoreMessageProcessor> _logger;
         public DataStoreMessageProcessor()
         {
-
+            //_logger = logger;
         }
 
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
         {
+            
             return Task.FromResult(new ExecutionState());
         }
     }
 
-    class NotificationMessageProcessor : IDataProcesor
+    public class NotificationMessageProcessor : INotificationProcesor
     {
+        //private Logger<NotificationMessageProcessor> _logger;
+
+        public NotificationMessageProcessor()
+        {
+            //_logger = logger;
+        }
+
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
         {
             return Task.FromResult(new ExecutionState());

@@ -6,7 +6,7 @@ using ThemoDataModel;
 
 namespace ThemoDataMessageProcessor.DataProcessor
 {
-    interface IDataProcesor
+    public interface IDataStoreProcesor
     {
         Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source);
     }

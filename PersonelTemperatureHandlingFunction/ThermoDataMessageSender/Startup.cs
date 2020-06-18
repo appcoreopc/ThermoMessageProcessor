@@ -27,9 +27,14 @@ namespace ThermoDataMessageSender
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddLogging();
+
+            builder.Services.AddSingleton<IDataStoreProcesor, DataStoreMessageProcessor>();
+            builder.Services.AddSingleton<INotificationProcesor, NotificationMessageProcessor>();
+
             builder.Services.AddSingleton<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
-            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
+
+            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ThermoDatabase")));
         }
     }
 }

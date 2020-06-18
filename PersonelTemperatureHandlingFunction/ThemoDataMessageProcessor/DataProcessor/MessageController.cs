@@ -7,32 +7,44 @@ namespace ThemoDataMessageProcessor.DataProcessor
 {
     public class MessageController : IMessageController
     {
+        private const string SavingMessageToDataStoreMessage = "Saving into database";
         private readonly ILogger<MessageController> _logger;
-        private IDataProcesor ds = new DataStoreMessageProcessor();
-        private IDataProcesor ns = new NotificationMessageProcessor();
-
-        public MessageController(ILogger<MessageController> logger)
+        private readonly IDataStoreProcesor _dataStoreProcesor;
+        private readonly INotificationProcesor _notificationProcesor;
+       
+        public MessageController(ILogger<MessageController> logger, 
+            IDataStoreProcesor dataStoreProcesor, INotificationProcesor notificationProcesor)
         {
             _logger = logger;
+            _dataStoreProcesor = dataStoreProcesor;
+            _notificationProcesor = notificationProcesor;
         }
 
         public Task ProcessDataAsync(PersonelThermoDataModel sourceData)
         {
             this._logger.LogInformation($"MessageController source : {DateTime.Now}");
 
-            // Save to database 
-
-            if (sourceData != null)
+            try
             {
-                this._logger.LogInformation("Data source is not null, saving into database");
-                ds.ProcessAsync(sourceData);
+                // Save to database 
+
+                if (sourceData != null)
+                {
+                    this._logger.LogInformation(SavingMessageToDataStoreMessage);
+                    _dataStoreProcesor.ProcessAsync(sourceData);
+                }
+
+
+                if (!string.IsNullOrWhiteSpace(sourceData?.Name))
+                {
+                    _notificationProcesor.ProcessAsync(sourceData);
+                }
             }
-
-            // Determine if temperature is higher than 37, then write to database /
-
-            if (!string.IsNullOrWhiteSpace(sourceData?.Name))
+            catch (Exception ex)
             {
-                this.ns.ProcessAsync(sourceData);
+                this._logger.LogError($"Error in MessageConroller : {ex.Message}");
+                this._logger.LogError($"StackTrace: {ex.StackTrace}");
+                throw;
             }
 
             return Task.CompletedTask;

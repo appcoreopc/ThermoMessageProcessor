@@ -12,12 +12,12 @@ using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 
 namespace ThermoDataMessageSender
 {
-    public  class Function1
+    public  class MessageSender
     {
         private readonly IMesssageThermoProcessor _messsageThermoProcessor;
-        private readonly ILogger<Function1> _logger;
+        private readonly ILogger<MessageSender> _logger;
 
-        public Function1(ILogger<Function1> logger, IMesssageThermoProcessor messsageThermoProcessor)
+        public MessageSender(ILogger<MessageSender> logger, IMesssageThermoProcessor messsageThermoProcessor)
         {
             this._messsageThermoProcessor = messsageThermoProcessor;
             this._logger = logger;
@@ -39,7 +39,6 @@ namespace ThermoDataMessageSender
 
             for (int i = 0; i < 10; i++)
             {
-
                 var d = new
                 {
                     Name = "jeremy" + DateTime.Now,
@@ -47,9 +46,14 @@ namespace ThermoDataMessageSender
                 };
 
                 await qms.SendMessagesAsync(MessageConverter.Serialize(d));
-                log.LogInformation($"Sending:i {d.Name}");
+                log.LogInformation($"Sending data over {i} - {DateTime.Now}");
+
+                await this._messsageThermoProcessor.ProcessMessage(MessageConverter.Serialize(d));
+
 
             }
+
+            log.LogInformation("Consuming data ");
 
             return new OkObjectResult($"Sent {DateTime.Now}.");
         }
@@ -58,7 +62,6 @@ namespace ThermoDataMessageSender
 
     public class MessageConverter
     {
-
         public static string Serialize<T>(T sourceObject)
         {
             return JsonConvert.SerializeObject(sourceObject);

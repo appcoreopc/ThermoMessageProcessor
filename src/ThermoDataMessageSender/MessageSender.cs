@@ -6,9 +6,9 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.ServiceBus;
-using ThemoDataMessageProcessor.PersonelThemoDataHandler;
+using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
 
-namespace ThermoDataMessageSender
+namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
 {
     public  class MessageSender
     {

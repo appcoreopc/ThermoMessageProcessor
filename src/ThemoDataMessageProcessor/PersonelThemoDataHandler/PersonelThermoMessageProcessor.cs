@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AzCloudApp.MessageProcessor.Core.DataProcessor;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
-using ThemoDataMessageProcessor.DataProcessor;
-using ThemoDataModel;
 
-namespace ThemoDataMessageProcessor.PersonelThemoDataHandler
+namespace AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler
 {
     public class PersonelThermoMessageProcessor : IMesssageThermoProcessor
     {
@@ -20,7 +20,7 @@ namespace ThemoDataMessageProcessor.PersonelThemoDataHandler
         }
         public Task ProcessMessage(string message)
         {
-            this._logger.LogInformation($"Processing message using PersonelThermoMessageProcessor  {DateTime.Now} : {message}");
+            this._logger.LogInformation($"Processing message using PersonelThermoMessageProcessor :{DateTime.Now} : {message}");
 
             var targetData = JsonConvert.DeserializeObject<PersonelThermoDataModel>(message);
             this._messageController.ProcessDataAsync(targetData);

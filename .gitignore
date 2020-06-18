@@ -18,4 +18,10 @@
 /src/ThermoDataStore/obj/Debug/netstandard2.0
 /src/ThermoDataStore/obj/Release/netstandard2.0
 /src/ThermoDataStore/obj
-/src/ThemoDataMessageProcessor/bin/Debug/netstandard2.0/ThermoDataMessageProcessor.dll
+/src/ThemoDataMessageProcessor/bin/*
+/src/ThemoDataMessageProcessor/obj/*
+src/PersonelTemperatureHandlingFunction/bin/*
+src/PersonelTemperatureHandlingFunction/obj/*
+src/ThermoDataMessageSender/bin/*
+src/ThermoDataMessageSender/obj/*
+src/ThermoDataMessageProcessor.Unit.Tests/obj/*

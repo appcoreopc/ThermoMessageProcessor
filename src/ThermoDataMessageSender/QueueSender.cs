@@ -1,14 +1,12 @@
 ﻿using Microsoft.Azure.ServiceBus;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThermoDataMessageSender
+namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
 {
     class QueueMessageSender
     {
-
         private readonly IQueueClient _queueClient;
 
         public QueueMessageSender(IQueueClient queueClient)

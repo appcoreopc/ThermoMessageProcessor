@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
 using System.Threading.Tasks;
-using ThemoDataModel;
 
-namespace ThemoDataMessageProcessor.DataProcessor
+namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public interface IDataStoreProcesor
     {

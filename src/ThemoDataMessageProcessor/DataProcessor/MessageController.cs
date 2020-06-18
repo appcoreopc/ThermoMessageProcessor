@@ -1,19 +1,19 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using ThemoDataModel;
 
-namespace ThemoDataMessageProcessor.DataProcessor
+namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class MessageController : IMessageController
     {
         private const string SavingMessageToDataStoreMessage = "Saving into database";
         private readonly ILogger<MessageController> _logger;
         private readonly IDataStoreProcesor _dataStoreProcesor;
-        private readonly INotificationProcesor _notificationProcesor;
+        private readonly INotificationProcessor _notificationProcesor;
        
         public MessageController(ILogger<MessageController> logger, 
-            IDataStoreProcesor dataStoreProcesor, INotificationProcesor notificationProcesor)
+            IDataStoreProcesor dataStoreProcesor, INotificationProcessor notificationProcesor)
         {
             _logger = logger;
             _dataStoreProcesor = dataStoreProcesor;

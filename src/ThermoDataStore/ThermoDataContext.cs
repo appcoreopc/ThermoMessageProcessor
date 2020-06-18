@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ThemoDataModel;
+﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using Microsoft.EntityFrameworkCore;
 
-namespace ThermoDataStore
+namespace AzCloudApp.MessageProcessor.Core.Thermo.DataStore
 {
     public class ThermoDataContext : DbContext
     {

@@ -1,15 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
 using System.Threading.Tasks;
-using ThemoDataModel;
 
-namespace ThemoDataMessageProcessor.DataProcessor
+namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class DataStoreMessageProcessor : IDataStoreProcesor
-    {
-        //private Logger<DataStoreMessageProcessor> _logger;
+    {   
         public DataStoreMessageProcessor()
         {
-            //_logger = logger;
         }
 
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
@@ -19,13 +16,10 @@ namespace ThemoDataMessageProcessor.DataProcessor
         }
     }
 
-    public class NotificationMessageProcessor : INotificationProcesor
+    public class NotificationMessageProcessor : INotificationProcessor
     {
-        //private Logger<NotificationMessageProcessor> _logger;
-
         public NotificationMessageProcessor()
         {
-            //_logger = logger;
         }
 
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)

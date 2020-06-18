@@ -1,4 +1,4 @@
-﻿namespace ThemoDataModel
+﻿namespace AzCloudApp.MessageProcessor.Core.ThermoDataModel
 {
     public class PersonImg
     {

@@ -1,20 +1,19 @@
-﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using AzCloudApp.MessageProcessor.Core.DataProcessor;
+using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
+using AzCloudApp.MessageProcessor.Core.Thermo.DataStore;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ThemoDataMessageProcessor.DataProcessor;
-using ThemoDataMessageProcessor.PersonelThemoDataHandler;
-using ThermoDataStore;
 
-[assembly: FunctionsStartup(typeof(ThermoDataMessageSender.Startup))]
+[assembly: FunctionsStartup(typeof(AzCloudApp.MessageProcessor.Core.MessageSenderFunction.Startup))]
 
-namespace ThermoDataMessageSender
+namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
 {
     public class Startup : FunctionsStartup
     {
         public Startup()
         {
-
         }
         
         public override void Configure(IFunctionsHostBuilder builder)
@@ -28,7 +27,7 @@ namespace ThermoDataMessageSender
             builder.Services.AddLogging();
 
             builder.Services.AddSingleton<IDataStoreProcesor, DataStoreMessageProcessor>();
-            builder.Services.AddSingleton<INotificationProcesor, NotificationMessageProcessor>();
+            builder.Services.AddSingleton<INotificationProcessor, NotificationMessageProcessor>();
 
             builder.Services.AddSingleton<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();

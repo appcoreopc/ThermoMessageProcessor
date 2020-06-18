@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonelTemperatureHandlingFunction", "PersonelTemperatureHandlingFunction\PersonelTemperatureHandlingFunction.csproj", "{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Function", "PersonelTemperatureHandlingFunction\AzCloudApp.MessageProcessor.Function.csproj", "{AD7D3054-7D26-41B4-ADA0-01F4C67A74C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataMessageProcessor", "ThemoDataMessageProcessor\ThermoDataMessageProcessor.csproj", "{ADCC7FC7-7FD0-4442-B665-04383AC35394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core", "ThemoDataMessageProcessor\AzCloudApp.MessageProcessor.Core.csproj", "{ADCC7FC7-7FD0-4442-B665-04383AC35394}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataMessageProcessor.Unit.Tests", "ThermoDataMessageProcessor.Unit.Tests\ThermoDataMessageProcessor.Unit.Tests.csproj", "{51CD9875-3461-4B45-9BA4-C60584356A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Unit.Tests", "ThermoDataMessageProcessor.Unit.Tests\AzCloudApp.MessageProcessor.Core.Unit.Tests.csproj", "{51CD9875-3461-4B45-9BA4-C60584356A0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThermoDataModel", "ThermoDataModel\ThermoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.ThermoDataModel", "ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj", "{7384F270-7192-4EFD-90FC-78F617BCBB44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermoDataStore", "ThermoDataStore\ThermoDataStore.csproj", "{8D1736F9-3785-4DFE-9703-FD3461C80F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.Thermo.DataStore", "ThermoDataStore\AzCloudApp.MessageProcessor.Core.Thermo.DataStore.csproj", "{8D1736F9-3785-4DFE-9703-FD3461C80F4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermoDataMessageSenderFunction", "ThermoDataMessageSender\ThermoDataMessageSenderFunction.csproj", "{78DE8B8D-5312-4072-860E-0F360CE5DBA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.MessageProcessor.Core.MessageSenderFunction", "ThermoDataMessageSender\AzCloudApp.MessageProcessor.Core.MessageSenderFunction.csproj", "{78DE8B8D-5312-4072-860E-0F360CE5DBA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

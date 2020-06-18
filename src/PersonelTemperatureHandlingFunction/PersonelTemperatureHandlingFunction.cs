@@ -1,10 +1,10 @@
+using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using ThemoDataMessageProcessor.PersonelThemoDataHandler;
 
-namespace PersonelTemperatureHandlingFunction
+namespace AzCloudApp.MessageProcessor.Function
 {
     public class PersonelTemperatureHandlingFunction
     {

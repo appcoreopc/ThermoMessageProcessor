@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
-    public interface IMessageController
+    public interface INotificationProcessor
     {
-        Task ProcessDataAsync(PersonelThermoDataModel sourceData);
+        Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source);
     }
 }

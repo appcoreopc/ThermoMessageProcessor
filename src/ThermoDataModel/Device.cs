@@ -1,4 +1,4 @@
-﻿namespace ThemoDataModel
+﻿namespace AzCloudApp.MessageProcessor.Core.ThermoDataModel
 {
     public partial class Device
     {

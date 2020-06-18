@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ThemoDataMessageProcessor.PersonelThemoDataHandler
+namespace AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler
 {
     public interface IMesssageThermoProcessor
     {

@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace ThermoDataMessageProcessor.Unit.Tests
+namespace AzCloudApp.MessageProcessor.Core.Unit.Tests
 {
     public class UnitTest1
     {

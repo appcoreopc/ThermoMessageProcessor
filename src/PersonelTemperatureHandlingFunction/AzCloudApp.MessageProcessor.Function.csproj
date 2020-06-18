@@ -12,9 +12,9 @@
 	<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThemoDataMessageProcessor\ThermoDataMessageProcessor.csproj" />
-    <ProjectReference Include="..\ThermoDataModel\ThermoDataModel.csproj" />
-    <ProjectReference Include="..\ThermoDataStore\ThermoDataStore.csproj" />
+    <ProjectReference Include="..\ThemoDataMessageProcessor\AzCloudApp.MessageProcessor.Core.csproj" />
+    <ProjectReference Include="..\ThermoDataModel\AzCloudApp.MessageProcessor.Core.ThermoDataModel.csproj" />
+    <ProjectReference Include="..\ThermoDataStore\AzCloudApp.MessageProcessor.Core.Thermo.DataStore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

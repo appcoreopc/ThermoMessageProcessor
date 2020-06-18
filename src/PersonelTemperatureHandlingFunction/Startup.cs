@@ -16,15 +16,14 @@ namespace PersonelTemperatureHandlingFunction
         {
         }
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
         public override void Configure(IFunctionsHostBuilder builder)
         {
+
+            var config = new ConfigurationBuilder()
+            .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .Build();
+
             builder.Services.AddLogging();
 
             builder.Services.AddSingleton<IDataStoreProcesor, DataStoreMessageProcessor>();
@@ -32,8 +31,8 @@ namespace PersonelTemperatureHandlingFunction
 
             builder.Services.AddSingleton<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
-            
-            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ThermoDatabase")));
+
+            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(config.GetConnectionString("ThermoDatabase")));
         }
     }
 }

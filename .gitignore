@@ -2,19 +2,20 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/PersonelTemperatureHandlingFunction/.vs/PersonelTemperatureHandlingFunction
-/PersonelTemperatureHandlingFunction/ThemoDataMessageProcessor/bin
-/PersonelTemperatureHandlingFunction/ThemoDataMessageProcessor/obj
-/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/bin/Debug/netcoreapp3.1
-/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/obj/Debug/netcoreapp3.1
-/PersonelTemperatureHandlingFunction/ThermoDataMessageProcessor.Unit.Tests/obj/Release/netcoreapp3.1
-/PersonelTemperatureHandlingFunction/ThermoDataModel/bin
-/PersonelTemperatureHandlingFunction/ThermoDataModel/obj/Debug/netstandard2.0
-/PersonelTemperatureHandlingFunction/ThermoDataModel/obj/Release/netstandard2.0
-/PersonelTemperatureHandlingFunction/PersonelTemperatureHandlingFunction/Properties
-/PersonelTemperatureHandlingFunction/ThermoDataModel/obj
-/PersonelTemperatureHandlingFunction/ThermoDataMessageSender/Properties/PublishProfiles
-/PersonelTemperatureHandlingFunction/ThermoDataStore/bin
-/PersonelTemperatureHandlingFunction/ThermoDataStore/obj/Debug/netstandard2.0
-/PersonelTemperatureHandlingFunction/ThermoDataStore/obj/Release/netstandard2.0
-/PersonelTemperatureHandlingFunction/ThermoDataStore/obj
+/src/.vs/PersonelTemperatureHandlingFunction
+/src/ThemoDataMessageProcessor/bin
+/src/ThemoDataMessageProcessor/obj
+/src/ThermoDataMessageProcessor.Unit.Tests/bin/Debug/netcoreapp3.1
+/src/ThermoDataMessageProcessor.Unit.Tests/obj/Debug/netcoreapp3.1
+/src/ThermoDataMessageProcessor.Unit.Tests/obj/Release/netcoreapp3.1
+/src/ThermoDataModel/bin
+/src/ThermoDataModel/obj/Debug/netstandard2.0
+/src/ThermoDataModel/obj/Release/netstandard2.0
+/src/PersonelTemperatureHandlingFunction/Properties
+/src/ThermoDataModel/obj
+/src/ThermoDataMessageSender/Properties/PublishProfiles
+/src/ThermoDataStore/bin
+/src/ThermoDataStore/obj/Debug/netstandard2.0
+/src/ThermoDataStore/obj/Release/netstandard2.0
+/src/ThermoDataStore/obj
+/src/ThemoDataMessageProcessor/bin/Debug/netstandard2.0/ThermoDataMessageProcessor.dll

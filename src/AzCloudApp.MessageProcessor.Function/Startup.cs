@@ -18,21 +18,17 @@ namespace AzCloudApp.MessageProcessor.Function
 
         public override void Configure(IFunctionsHostBuilder builder)
         {
-
-            var config = new ConfigurationBuilder()
+            var configBuilder = new ConfigurationBuilder()
             .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables()
             .Build();
 
             builder.Services.AddLogging();
-
-            builder.Services.AddSingleton<IDataStoreProcesor, DataStoreMessageProcessor>();
-            builder.Services.AddSingleton<INotificationProcessor, NotificationMessageProcessor>();
-
-            builder.Services.AddSingleton<IMessageController, MessageController>();
+            builder.Services.AddTransient<IDataStoreProcesor, DataStoreMessageProcessor>();
+            builder.Services.AddTransient<INotificationProcessor, NotificationMessageProcessor>();
+            builder.Services.AddTransient<IMessageController, MessageController>();
             builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
-
-            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(config.GetConnectionString("ThermoDatabase")));
+            builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(configBuilder.GetConnectionString("ThermoDatabase")));
         }
     }
 }

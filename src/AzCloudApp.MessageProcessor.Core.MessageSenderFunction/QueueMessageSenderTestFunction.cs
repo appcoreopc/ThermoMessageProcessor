@@ -10,18 +10,18 @@ using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
 
 namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
 {
-    public  class MessageSender
+    public  class QueueMessageSenderTestFunction
     {
         private readonly IMesssageThermoProcessor _messsageThermoProcessor;
-        private readonly ILogger<MessageSender> _logger;
+        private readonly ILogger<QueueMessageSenderTestFunction> _logger;
 
-        public MessageSender(ILogger<MessageSender> logger, IMesssageThermoProcessor messsageThermoProcessor)
+        public QueueMessageSenderTestFunction(ILogger<QueueMessageSenderTestFunction> logger, IMesssageThermoProcessor messsageThermoProcessor)
         {
             this._messsageThermoProcessor = messsageThermoProcessor;
             this._logger = logger;
         }
 
-        [FunctionName("MessageSenderTestFunction")]
+        [FunctionName("QueueMessageSenderTestFunction")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)

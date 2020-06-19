@@ -11,17 +11,18 @@ namespace AzCloudApp.MessageProcessor.Function
         private readonly IMesssageThermoProcessor _messsageThermoProcessor;
         private readonly ILogger<PersonelTemperatureHandlingFunction> _logger;
 
-        public PersonelTemperatureHandlingFunction(ILogger<PersonelTemperatureHandlingFunction> logger, IMesssageThermoProcessor messsageThermoProcessor)
+        public PersonelTemperatureHandlingFunction(ILogger<PersonelTemperatureHandlingFunction> logger, 
+            IMesssageThermoProcessor messsageThermoProcessor)
         {
             this._messsageThermoProcessor = messsageThermoProcessor;
             this._logger = logger;
         }
 
         [FunctionName("ThermoDataProcessorAzure")]
-        public async Task Run([ServiceBusTrigger("devsbqbank", 
+        public async Task Run([ServiceBusTrigger("%TargetQueueName%", 
             Connection = "sbqconnection")]string messageSource, ILogger log)
         {
-            this._logger.LogInformation($"ThermoDataProcessorAzure Logger: {messageSource} {DateTime.Now}");
+            this._logger.LogInformation($"ThermoDataProcessorAzure Data: {messageSource} {DateTime.Now}");
             await this._messsageThermoProcessor.ProcessMessage(messageSource);
         }
     }

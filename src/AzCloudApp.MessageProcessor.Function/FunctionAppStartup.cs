@@ -6,6 +6,7 @@ using AzCloudApp.MessageProcessor.Core.DataProcessor;
 using AzCloudApp.MessageProcessor.Core.Thermo.DataStore;
 using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
 using AzCloudApp.MessageProcessor.Core.MessageController;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
 
 [assembly: FunctionsStartup(typeof(AzCloudApp.MessageProcessor.Function.FunctionAppStartup))]
 
@@ -23,6 +24,17 @@ namespace AzCloudApp.MessageProcessor.Function
             .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables()
             .Build();
+
+            builder
+              .Services
+              .AddOptions<NotificationConfiguration>()
+              .Configure<IConfiguration>((messageResponderSettings, configuration) =>
+              {
+                  configuration
+                  .GetSection("Notification")
+                  .Bind(messageResponderSettings);
+              });
+
 
             builder.Services.AddLogging();
             

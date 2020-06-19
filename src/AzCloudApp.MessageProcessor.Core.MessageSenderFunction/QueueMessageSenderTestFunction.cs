@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.ServiceBus;
 using AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
 {
@@ -14,11 +16,13 @@ namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
     {
         private readonly IMesssageThermoProcessor _messsageThermoProcessor;
         private readonly ILogger<QueueMessageSenderTestFunction> _logger;
+        private readonly NotificationConfiguration _optionsNotification;
 
-        public QueueMessageSenderTestFunction(ILogger<QueueMessageSenderTestFunction> logger, IMesssageThermoProcessor messsageThermoProcessor)
+        public QueueMessageSenderTestFunction(ILogger<QueueMessageSenderTestFunction> logger, IMesssageThermoProcessor messsageThermoProcessor, IOptions<NotificationConfiguration> options)
         {
             this._messsageThermoProcessor = messsageThermoProcessor;
             this._logger = logger;
+            this._optionsNotification = options.Value;
         }
 
         [FunctionName("QueueMessageSenderTestFunction")]

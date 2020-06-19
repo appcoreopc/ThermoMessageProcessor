@@ -8,6 +8,11 @@ namespace AzCloudApp.MessageProcessor.Core.MessageController
 {
     public class ThermoMessageController : IMessageController
     {
+        private const string AttendanceMessageProcessingMessage = "[ATTENDANCE] processing record";
+        private const string ImageProcessingMessage = "[IMAGE] processing record";
+        private const string DeviceProcessingMessage = "[DEVICE] processing record ";
+        private const string PersonProcessingMessage = "[PERSON DATA] processing record.";
+
         private readonly ILogger<ThermoMessageController> _logger;
         private readonly IDataStoreProcesor _dataStoreProcesor;
         private readonly INotificationProcessor _notificationProcesor;
@@ -40,19 +45,19 @@ namespace AzCloudApp.MessageProcessor.Core.MessageController
                 switch (messsageType.MessageType)
                 {
                     case 0:
-                        this._logger.LogInformation("Person processing record.");
+                        this._logger.LogInformation(PersonProcessingMessage);
                         _dataStoreProcesor.SavePersonAsync(sourceData);
                         break;
                     case 1:
-                        this._logger.LogInformation("Image processing record");
+                        this._logger.LogInformation(ImageProcessingMessage);
                         _dataStoreProcesor.SavePersonImgAsync(sourceData);
                         break;
                     case 2:
-                        this._logger.LogInformation("Device processing record ");
+                        this._logger.LogInformation(DeviceProcessingMessage);
                         _dataStoreProcesor.SaveDevicesAsync(sourceData);
                         break;
                     case 3:
-                        this._logger.LogInformation("Attendance processing record");
+                        this._logger.LogInformation(AttendanceMessageProcessingMessage);
                         _dataStoreProcesor.SaveAttendRecordAsync(sourceData);
                         _notificationProcesor.ProcessAsync(sourceData);
                         break;

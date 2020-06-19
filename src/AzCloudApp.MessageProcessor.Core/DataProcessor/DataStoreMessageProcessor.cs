@@ -1,46 +1,45 @@
 ﻿using AzCloudApp.MessageProcessor.Core.Thermo.DataStore;
 using System.Threading.Tasks;
 using AzCloudApp.MessageProcessor.Core.Utils;
-using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using Newtonsoft.Json;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class DataStoreMessageProcessor : IDataStoreProcesor
     {
         private readonly ThermoDataContext _thermoDataContext;
-
+        
         public DataStoreMessageProcessor(ThermoDataContext thermoDataContext)
         {
             _thermoDataContext = thermoDataContext;
         }
 
-        public Task<int> SavePersonAsync(PersonImgDataMessageQueue source)
+        public Task<int> SavePersonAsync(string source)
         {
-            this._thermoDataContext.PersonImgs.Add(source.ToModel());
+            var target = JsonConvert.DeserializeObject<PersonImgDataMessageQueue>(source);
+            this._thermoDataContext.PersonImgs.Add(target.ToModel());
             return this._thermoDataContext.SaveChangesAsync();
         }
 
-        public Task<int> SaveDevicesAsync(DeviceDataMessageQueue source)
+        public Task<int> SaveDevicesAsync(string source)
         {
-            this._thermoDataContext.Devices.Add(source.ToModel());
+            var target = JsonConvert.DeserializeObject<DeviceDataMessageQueue>(source);
+            this._thermoDataContext.Devices.Add(target.ToModel());
             return this._thermoDataContext.SaveChangesAsync();
         }
 
-        public Task<int> SaveAttendRecordAsync(AttendRecordDataMessageQueue source)
+        public Task<int> SaveAttendRecordAsync(string source)
         {
-            this._thermoDataContext.AttendRecords.Add(source.ToModel());
+            var target = JsonConvert.DeserializeObject<AttendRecordDataMessageQueue>(source);
+            this._thermoDataContext.AttendRecords.Add(target.ToModel());
             return this._thermoDataContext.SaveChangesAsync();
         }
 
-        public Task<int> SavePersonAsync(PersonDataMessageQueue source)
+        public Task<int> SavePersonImgAsync(string source)
         {
-            this._thermoDataContext.People.Add(source.ToModel());
+            var target = JsonConvert.DeserializeObject<PersonImgDataMessageQueue>(source);
+            this._thermoDataContext.PersonImgs.Add(target.ToModel());
             return _thermoDataContext.SaveChangesAsync();
-        }
-
-        public Task<int> ProcessAsync(PersonelThermoDataModel source)
-        {
-            return Task.FromResult(1);
         }
     }
 }

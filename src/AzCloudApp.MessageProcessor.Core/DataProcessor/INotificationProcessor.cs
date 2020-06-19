@@ -5,6 +5,6 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public interface INotificationProcessor
     {
-        Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source);
+        Task<ExecutionState> ProcessAsync(string source);
     }
 }

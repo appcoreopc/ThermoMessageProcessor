@@ -5,6 +5,6 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public interface IMessageController
     {
-        Task ProcessDataAsync(PersonelThermoDataModel sourceData);
+        Task ProcessDataAsync(string sourceData);
     }
 }

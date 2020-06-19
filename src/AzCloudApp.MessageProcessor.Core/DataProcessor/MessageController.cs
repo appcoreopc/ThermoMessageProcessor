@@ -1,5 +1,5 @@
-﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -7,12 +7,11 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class MessageController : IMessageController
     {
-        private const string SavingMessageToDataStoreMessage = "Saving into database";
         private readonly ILogger<MessageController> _logger;
         private readonly IDataStoreProcesor _dataStoreProcesor;
         private readonly INotificationProcessor _notificationProcesor;
-       
-        public MessageController(ILogger<MessageController> logger, 
+
+        public MessageController(ILogger<MessageController> logger,
             IDataStoreProcesor dataStoreProcesor, INotificationProcessor notificationProcesor)
         {
             _logger = logger;
@@ -20,24 +19,36 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
             _notificationProcesor = notificationProcesor;
         }
 
-        public Task ProcessDataAsync(PersonelThermoDataModel sourceData)
+        // Peek message type //
+        public Task ProcessDataAsync(string sourceData)
         {
-            this._logger.LogInformation($"MessageController source : {DateTime.Now}");
+            this._logger.LogInformation($"MessageController::ProcessDataAsync executes : {DateTime.Now}");
 
             try
             {
-                // Save to database 
+                var messsageType = GetMessageType(sourceData);
 
-                if (sourceData != null)
+                switch (messsageType.MessageType)
                 {
-                    this._logger.LogInformation(SavingMessageToDataStoreMessage);
-                    _dataStoreProcesor.ProcessAsync(sourceData);
-                }
-
-
-                if (!string.IsNullOrWhiteSpace(sourceData?.Name))
-                {
-                    _notificationProcesor.ProcessAsync(sourceData);
+                    case 0:
+                        this._logger.LogInformation("Person processing record.");
+                        _dataStoreProcesor.SavePersonAsync(sourceData);
+                        break;
+                    case 1:
+                        this._logger.LogInformation("Image processing record");
+                        _dataStoreProcesor.SavePersonImgAsync(sourceData);
+                        break;
+                    case 2:
+                        this._logger.LogInformation("Device processing record ");
+                        _dataStoreProcesor.SaveDevicesAsync(sourceData);
+                        break;
+                    case 3:
+                        this._logger.LogInformation("Attendance processing record");
+                        _dataStoreProcesor.SaveAttendRecordAsync(sourceData);
+                        _notificationProcesor.ProcessAsync(sourceData);
+                        break;
+                    default:
+                        break;
                 }
             }
             catch (Exception ex)
@@ -46,8 +57,12 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
                 this._logger.LogError($"StackTrace: {ex.StackTrace}");
                 throw;
             }
-
             return Task.CompletedTask;
+        }
+
+        private ThermoBaseMessageType GetMessageType(string sourceData)
+        {
+            return JsonConvert.DeserializeObject<ThermoBaseMessageType>(sourceData);
         }
     }
 }

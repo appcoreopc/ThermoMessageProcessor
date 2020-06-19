@@ -1,6 +1,6 @@
 ﻿namespace AzCloudApp.MessageProcessor.Core.ThermoDataModel
 {
-    public class PersonelThermoDataModel
+    public class PersonelThermoDataModel 
     {
         public string Name { get; set; }
 

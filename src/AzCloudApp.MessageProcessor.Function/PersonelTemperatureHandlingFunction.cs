@@ -22,7 +22,7 @@ namespace AzCloudApp.MessageProcessor.Function
         public async Task Run([ServiceBusTrigger("%TargetQueueName%", 
             Connection = "sbqconnection")]string messageSource, ILogger log)
         {
-            this._logger.LogInformation($"ThermoDataProcessorAzure Data: {messageSource} {DateTime.Now}");
+            this._logger.LogInformation($"ThermoDataProcessorAzure started : {messageSource} {DateTime.Now}");
             await this._messsageThermoProcessor.ProcessMessage(messageSource);
         }
     }

@@ -11,9 +11,7 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
         {
-
-
-            return Task.FromResult(new ExecutionState());
+            return Task.FromResult(new ExecutionState(0));
         }
     }
 }

@@ -21,9 +21,7 @@ namespace AzCloudApp.MessageProcessor.Core.PersonelThemoDataHandler
         public Task ProcessMessage(string message)
         {
             this._logger.LogInformation($"Processing message using PersonelThermoMessageProcessor :{DateTime.Now} : {message}");
-
-            var targetData = JsonConvert.DeserializeObject<PersonelThermoDataModel>(message);
-            this._messageController.ProcessDataAsync(targetData);
+            this._messageController.ProcessDataAsync(message);
             return Task.CompletedTask;
         }
     }

@@ -2,14 +2,14 @@
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
-    public class PersonImgDataMessageQueue
+    public class PersonImgDataMessageQueue : ThermoBaseMessageType 
     {
         public int Id { get; set; }
         public int PersonId { get; set; }
         public string ImgBase64 { get; set; }
     }
 
-    public class AttendRecordDataMessageQueue
+    public class AttendRecordDataMessageQueue : ThermoBaseMessageType
     {
         public int AttendRecordId { get; set; }
         public int Id { get; set; }
@@ -22,7 +22,7 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
         public string ImgBase64 { get; set; }
     }
 
-    public class DeviceDataMessageQueue
+    public class DeviceDataMessageQueue : ThermoBaseMessageType
     {
         public int Id { get; set; }
         public string DeviceId { get; set; }
@@ -30,7 +30,7 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
         public bool? IsActive { get; set; }
     }
 
-    public class PersonDataMessageQueue
+    public class PersonDataMessageQueue : ThermoBaseMessageType
     {
         public int Id { get; set; }
         public string CertificateNumber { get; set; }
@@ -43,6 +43,5 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
         public string Phone { get; set; }
         public string Userid { get; set; }
         public DateTime? UpdateTime { get; set; }
-
     }
 }

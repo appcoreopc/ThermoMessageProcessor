@@ -21,39 +21,34 @@ namespace AzCloudApp.MessageProcessor.Core.MessageSenderFunction
             this._logger = logger;
         }
 
-        [FunctionName("ThermoDatabase")]
+        [FunctionName("MessageSenderTestFunction")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-           const string ServiceBusConnectionString = "Endpoint=sb://devsbbank.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ZeoCedTJSaqVPAx8bHX998DVIYHtuG5g0OKlUkUFF9g=";
+           const string ServiceBusConnectionString = 
+                "Endpoint=sb://devsbbank.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ZeoCedTJSaqVPAx8bHX998DVIYHtuG5g0OKlUkUFF9g=";
             const string QueueName = "devsbqbank";
-            IQueueClient queueClient;
-
+            
             log.LogInformation($"Target queue name : {QueueName}");
+            IQueueClient queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
-            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
             var qms = new QueueMessageSender(queueClient);
 
             for (int i = 0; i < 10; i++)
             {
-                var d = new
+                var testMessage = new
                 {
                     Name = "jeremy" + DateTime.Now,
                     Email = "kepung@gmail.com"
                 };
 
-                await qms.SendMessagesAsync(MessageConverter.Serialize(d));
+                await qms.SendMessagesAsync(MessageConverter.Serialize(testMessage));
                 log.LogInformation($"Sending data over {i} - {DateTime.Now}");
-
-                await this._messsageThermoProcessor.ProcessMessage(MessageConverter.Serialize(d));
-
-
+                await this._messsageThermoProcessor.ProcessMessage(MessageConverter.Serialize(testMessage));
             }
-
-            log.LogInformation("Consuming data ");
-
-            return new OkObjectResult($"Sent {DateTime.Now}.");
+            
+            return new OkObjectResult($"Sent operation completed! :{DateTime.Now}.");
         }
     }
 }

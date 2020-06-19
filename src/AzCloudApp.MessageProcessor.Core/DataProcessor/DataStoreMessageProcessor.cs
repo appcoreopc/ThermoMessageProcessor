@@ -1,29 +1,23 @@
-﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+﻿using AzCloudApp.MessageProcessor.Core.Thermo.DataStore;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
 using System.Threading.Tasks;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class DataStoreMessageProcessor : IDataStoreProcesor
-    {   
-        public DataStoreMessageProcessor()
-        {
-        }
-
-        public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
-        {
-            
-            return Task.FromResult(new ExecutionState());
-        }
-    }
-
-    public class NotificationMessageProcessor : INotificationProcessor
     {
-        public NotificationMessageProcessor()
+
+        private readonly ThermoDataContext _thermoDataContext;
+
+        public DataStoreMessageProcessor(ThermoDataContext thermoDataContext)
         {
+            _thermoDataContext = thermoDataContext;
         }
 
         public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
         {
+
+            _thermoDataContext.SaveChanges();
             return Task.FromResult(new ExecutionState());
         }
     }

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
-    public interface INotificationProcessor
+    public interface ISendMailService
     {
-        Task<int> ProcessAsync(string source);
+        Task<int> SendMailAsync(AttendRecord record); 
     }
 }

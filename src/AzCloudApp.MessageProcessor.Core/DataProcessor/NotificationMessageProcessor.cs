@@ -1,17 +1,28 @@
 ﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using AzCloudApp.MessageProcessor.Core.Utils;
 using System.Threading.Tasks;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class NotificationMessageProcessor : INotificationProcessor
     {
-        public NotificationMessageProcessor()
+        private readonly float _safeBodyTemperate;
+        private readonly ISendMailService _sendMailService;
+        public NotificationMessageProcessor(ISendMailService sendMail, float safeBodyTemperate = 37)
         {
+            _safeBodyTemperate = safeBodyTemperate;
+            this._sendMailService = sendMail;
         }
 
-        public Task<ExecutionState> ProcessAsync(PersonelThermoDataModel source)
+        public Task<int> ProcessAsync(string source)
         {
-            return Task.FromResult(new ExecutionState(0));
+            var target = MessageConverter.GetMessageType<AttendRecord>(source);
+
+            if (target.BodyTemperature.GetFloatValue() > _safeBodyTemperate)
+            {
+                _sendMailService.SendMailAsync(target);
+            }
+            return Task.FromResult(1);
         }
     }
 }

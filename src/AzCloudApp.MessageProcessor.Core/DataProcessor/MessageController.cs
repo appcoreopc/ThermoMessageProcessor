@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+﻿using AzCloudApp.MessageProcessor.Core.Utils;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -19,14 +19,22 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
             _notificationProcesor = notificationProcesor;
         }
 
-        // Peek message type //
+        //var messsageType = GetMessageType(sourceData);
+        //_ = messsageType.MessageType switch
+        //        {
+        //            (0) => _dataStoreProcesor.SavePersonAsync(sourceData),
+        //            (1) => _dataStoreProcesor.SavePersonImgAsync(sourceData),
+        //            (2) => _dataStoreProcesor.SaveDevicesAsync(sourceData),
+        //            (3) => _dataStoreProcesor.SaveAttendRecordAsync(sourceData)
+        //};
+
         public Task ProcessDataAsync(string sourceData)
         {
             this._logger.LogInformation($"MessageController::ProcessDataAsync executes : {DateTime.Now}");
 
             try
             {
-                var messsageType = GetMessageType(sourceData);
+                var messsageType = MessageConverter.GetMessageType<ThermoBaseMessageType>(sourceData);
 
                 switch (messsageType.MessageType)
                 {
@@ -58,11 +66,6 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
                 throw;
             }
             return Task.CompletedTask;
-        }
-
-        private ThermoBaseMessageType GetMessageType(string sourceData)
-        {
-            return JsonConvert.DeserializeObject<ThermoBaseMessageType>(sourceData);
         }
     }
 }

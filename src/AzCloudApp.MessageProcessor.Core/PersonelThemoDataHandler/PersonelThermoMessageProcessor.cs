@@ -1,7 +1,5 @@
-﻿using AzCloudApp.MessageProcessor.Core.DataProcessor;
-using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+﻿using AzCloudApp.MessageProcessor.Core.MessageController;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 

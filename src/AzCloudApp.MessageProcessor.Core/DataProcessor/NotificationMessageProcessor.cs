@@ -6,11 +6,11 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public class NotificationMessageProcessor : INotificationProcessor
     {
-        private readonly float _safeBodyTemperate;
+        public float SafeBodyTemperature { get; set; }
+
         private readonly ISendMailService _sendMailService;
-        public NotificationMessageProcessor(ISendMailService sendMail, float safeBodyTemperate = 37)
+        public NotificationMessageProcessor(ISendMailService sendMail)
         {
-            _safeBodyTemperate = safeBodyTemperate;
             this._sendMailService = sendMail;
         }
 
@@ -18,7 +18,7 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
         {
             var target = MessageConverter.GetMessageType<AttendRecord>(source);
 
-            if (target.BodyTemperature.GetFloatValue() > _safeBodyTemperate)
+            if (target.BodyTemperature.GetFloatValue() > SafeBodyTemperature)
             {
                 _sendMailService.SendMailAsync(target);
             }

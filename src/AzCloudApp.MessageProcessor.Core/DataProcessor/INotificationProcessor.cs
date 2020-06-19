@@ -1,5 +1,4 @@
-﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {

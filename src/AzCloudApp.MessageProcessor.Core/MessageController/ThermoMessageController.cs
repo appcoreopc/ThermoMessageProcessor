@@ -1,17 +1,18 @@
-﻿using AzCloudApp.MessageProcessor.Core.Utils;
+﻿using AzCloudApp.MessageProcessor.Core.DataProcessor;
+using AzCloudApp.MessageProcessor.Core.Utils;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace AzCloudApp.MessageProcessor.Core.DataProcessor
+namespace AzCloudApp.MessageProcessor.Core.MessageController
 {
-    public class MessageController : IMessageController
+    public class ThermoMessageController : IMessageController
     {
-        private readonly ILogger<MessageController> _logger;
+        private readonly ILogger<ThermoMessageController> _logger;
         private readonly IDataStoreProcesor _dataStoreProcesor;
         private readonly INotificationProcessor _notificationProcesor;
 
-        public MessageController(ILogger<MessageController> logger,
+        public ThermoMessageController(ILogger<ThermoMessageController> logger,
             IDataStoreProcesor dataStoreProcesor, INotificationProcessor notificationProcesor)
         {
             _logger = logger;

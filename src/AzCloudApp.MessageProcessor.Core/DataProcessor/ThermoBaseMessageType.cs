@@ -3,7 +3,6 @@
     public class ThermoBaseMessageType
     {
         public int MessageType { get; set; }
-        
     }
 
     public enum TaskStatus

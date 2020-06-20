@@ -24,7 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunction", "AzureFunct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "End-To-End-Test", "End-To-End-Test", "{F2559FEF-D8A1-4A65-BF8D-0535D091B91E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzCloudApp.Notification.Function", "AzCloudApp.Notification.Function\AzCloudApp.Notification.Function.csproj", "{9F768F43-CE38-41F2-BE4C-94C7C1602650}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzCloudApp.Notification.Function", "AzCloudApp.Notification.Function\AzCloudApp.Notification.Function.csproj", "{9F768F43-CE38-41F2-BE4C-94C7C1602650}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzCloudApp.Notification.Test.SenderFunction", "AzCloudApp.Notification.Test.SenderFunction\AzCloudApp.Notification.Test.SenderFunction.csproj", "{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{9F768F43-CE38-41F2-BE4C-94C7C1602650}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F768F43-CE38-41F2-BE4C-94C7C1602650}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F768F43-CE38-41F2-BE4C-94C7C1602650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{3D768A0A-121B-4A16-96C8-D9A3A300F433} = {2035DF36-2EED-4AD7-AF79-8083C037591A}
 		{F2559FEF-D8A1-4A65-BF8D-0535D091B91E} = {2035DF36-2EED-4AD7-AF79-8083C037591A}
 		{9F768F43-CE38-41F2-BE4C-94C7C1602650} = {2035DF36-2EED-4AD7-AF79-8083C037591A}
+		{BC989E5F-518B-4AFA-A1BA-67D4326AF4CD} = {F2559FEF-D8A1-4A65-BF8D-0535D091B91E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5650CBF3-A0BE-42F7-92B5-3E95619B2871}

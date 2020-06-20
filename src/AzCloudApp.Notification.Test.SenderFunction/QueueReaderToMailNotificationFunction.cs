@@ -29,11 +29,15 @@ namespace AzCloudApp.Notification.Test.SenderFunction
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
         {
-            var body = new StreamReader(req.Body);
-            body.BaseStream.Seek(0, SeekOrigin.Begin);
-            var requestBody = body.ReadToEnd();
+            //var body = new StreamReader(req.Body);
+            //body.BaseStream.Seek(0, SeekOrigin.Begin);
+            //var requestBody = body.ReadToEnd();
 
-            await this._notificationProcessor.ProcessAsync(requestBody);
+            // await this._notificationProcessor.ProcessAsync(requestBody);
+
+            var requestBody = "";
+            await this._notificationProcessor.ProcessAsync("");
+
             return new OkObjectResult($"Reading messages from the queue.{DateTime.Now} {requestBody}");
         }
     }

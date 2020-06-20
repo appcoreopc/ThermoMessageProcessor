@@ -1,5 +1,7 @@
 ﻿using AzCloudApp.MessageProcessor.Core.ThermoDataModel;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
@@ -13,10 +15,12 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
     public class SendMailService : ISendMailService
     {
         private ILogger<SendMailService> _logger;
+        private NotificationConfiguration _notificationConfiguration;
 
-        public SendMailService(ILogger<SendMailService> logger)
+        public SendMailService(ILogger<SendMailService> logger, IOptions<NotificationConfiguration> notificationConfiguration)
         {
             _logger = logger;
+            _notificationConfiguration = notificationConfiguration.Value;
         }
 
         public async Task<int> SendMailAsync(AttendRecord record)
@@ -27,10 +31,10 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 
         private Task SendMailAsync()
         { 
-            this._logger.LogInformation("Sending email. smtp-relay.gmail.com");
+            this._logger.LogInformation($"Sending email : {this._notificationConfiguration.SmtpServer}");
 
             MailMessage mail = new MailMessage();
-            SmtpClient mailClient = new SmtpClient("smtp-relay.gmail.com");
+            SmtpClient mailClient = new SmtpClient(this._notificationConfiguration.SmtpServer);
 
             mail.From = new MailAddress("jerwonzaks@gmail.com");
             mail.To.Add("kepung@gmail.com");
@@ -38,7 +42,10 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
             mail.Body = "This is for testing SMTP mail from GMAIL";
 
             mailClient.Port = 587;
-            mailClient.Credentials = new System.Net.NetworkCredential("jerwonzaks@gmail.com", "!0nicFrame");
+            mailClient.Credentials = new System.Net.NetworkCredential(
+                this._notificationConfiguration.Username,
+                this._notificationConfiguration.Password);
+            
             mailClient.EnableSsl = true;
             mailClient.SendAsync(mail, new object());
 

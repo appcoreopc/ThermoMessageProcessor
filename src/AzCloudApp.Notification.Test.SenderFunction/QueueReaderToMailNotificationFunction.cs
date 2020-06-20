@@ -1,35 +1,40 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Options;
+using AzCloudApp.MessageProcessor.Core.DataProcessor;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
+using System.IO;
 
 namespace AzCloudApp.Notification.Test.SenderFunction
 {
-    public static class QueueReaderToMailNotificationFunction
+    public class QueueReaderToMailNotificationFunction
     {
+        private readonly INotificationProcessor _notificationProcessor;
+        private readonly ILogger<QueueReaderToMailNotificationFunction> _logger;
+        private NotificationConfiguration _notificationConfiguration; 
+
+        public QueueReaderToMailNotificationFunction(ILogger<QueueReaderToMailNotificationFunction> logger, INotificationProcessor notificationProcessor, IOptions<NotificationConfiguration> options)
+        {   
+            _logger = logger;
+            _notificationProcessor = notificationProcessor;
+            _notificationConfiguration = options.Value;
+        }
+
         [FunctionName("QueueReaderToMailNotificationFunction")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            var body = new StreamReader(req.Body);
+            body.BaseStream.Seek(0, SeekOrigin.Begin);
+            var requestBody = body.ReadToEnd();
 
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            await this._notificationProcessor.ProcessAsync(requestBody);
+            return new OkObjectResult($"Reading messages from the queue.{DateTime.Now} {requestBody}");
         }
     }
 }

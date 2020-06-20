@@ -36,12 +36,9 @@ namespace AzCloudApp.MessageProcessor.Function
                   .Bind(messageResponderSettings);
               });
 
-
             builder.Services.AddLogging();
-            
             builder.Services.AddTransient<ISendMailService, SendMailService>();
-            builder.Services.AddTransient<IMessageController, ThermoMessageController>();
-            builder.Services.AddTransient<IMesssageThermoProcessor, PersonelThermoMessageProcessor>();
+            builder.Services.AddTransient<INotificationProcessor, NotificationMessageProcessor>();
             builder.Services.AddDbContext<ThermoDataContext>(opt => opt.UseSqlServer(configBuilder.GetConnectionString("ThermoDatabase")));
         }
     }

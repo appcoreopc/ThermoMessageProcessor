@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 src/AzCloudApp.MessageProcessor.Core/bin/*
@@ -14,3 +14,4 @@ src/AzCloudApp.MessageProcessor.Function/obj/*
 src/AzCloudApp.MessageProcessor.Core.ThermoDataModel/bin/*
 src/AzCloudApp.MessageProcessor.Core.ThermoDataModel/obj/*
 .gitignore
+src/.vs/

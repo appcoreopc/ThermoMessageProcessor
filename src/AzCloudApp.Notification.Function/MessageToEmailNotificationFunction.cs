@@ -1,24 +1,30 @@
+using AzCloudApp.MessageProcessor.Core.DataProcessor;
+using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
+using System.Threading.Tasks;
 
 namespace AzCloudApp.Notification.Function
 {
     public class MessageToEmailNotificationFunction
     {
         private readonly ILogger<MessageToEmailNotificationFunction> _logger;
-
-        public MessageToEmailNotificationFunction(ILogger<MessageToEmailNotificationFunction> logger)
+        private readonly INotificationProcessor _notificationProcessor;
+        private NotificationConfiguration _options;
+        public MessageToEmailNotificationFunction(ILogger<MessageToEmailNotificationFunction> logger, INotificationProcessor notificationMessageProcessor, IOptions<NotificationConfiguration> options)
         {
             this._logger = logger;
-
+            this._notificationProcessor = notificationMessageProcessor;
+            this._options = options.Value;
         }
 
         [FunctionName("MessageToEmailNotificationFunction")]
-        public void Run([ServiceBusTrigger("sbqmail", Connection = "MailingQueueConnection")] string messageSource)
+        public async Task Run([ServiceBusTrigger("sbqmail", Connection = "sbqconnection")] string messageSource)
         {
-            this._logger.LogInformation($"ThermoDataProcessorAzure started : {messageSource} {DateTime.Now}");
-            //await this._messsageThermoProcessor.ProcessMessage(messageSource);
+            this._logger.LogInformation($"Notification Message Processor started : {messageSource} {DateTime.Now}");
+            await this._notificationProcessor.ProcessAsync(messageSource);
         }
     }
 }

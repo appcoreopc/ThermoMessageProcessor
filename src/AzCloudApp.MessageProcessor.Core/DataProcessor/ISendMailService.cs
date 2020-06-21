@@ -2,6 +2,7 @@
 using AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
 {
     public interface ISendMailService
     {
-        Task<int> SendMailAsync(AttendRecord record); 
+        Task<int> SendMailAsync(AttendRecord record);
     }
 
     public class SendMailService : ISendMailService
@@ -30,25 +31,29 @@ namespace AzCloudApp.MessageProcessor.Core.DataProcessor
         }
 
         private Task SendMailAsync()
-        { 
+        {
             this._logger.LogInformation($"Sending email : {this._notificationConfiguration.SmtpServer}");
 
-            MailMessage mail = new MailMessage();
-            SmtpClient mailClient = new SmtpClient(this._notificationConfiguration.SmtpServer);
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            message.From = new MailAddress("kepung@gmail.com");
+            message.To.Add(new MailAddress("kepung@gmail.com"));
+       
+            message.Subject = "Test";
+            message.IsBodyHtml = true; //to make message body as html  
+            message.Body = "helllllll oo there";
+            smtp.Port = this._notificationConfiguration.Port;
+            smtp.Host = this._notificationConfiguration.SmtpServer; //for gmail host  
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(
+                this._notificationConfiguration.Username, 
+                this._notificationConfiguration.Password
+             );
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(message);
 
-            mail.From = new MailAddress("jerwonzaks@gmail.com");
-            mail.To.Add("kepung@gmail.com");
-            mail.Subject = "Test Mail";
-            mail.Body = "This is for testing SMTP mail from GMAIL";
-
-            mailClient.Port = 587;
-            mailClient.Credentials = new System.Net.NetworkCredential(
-                this._notificationConfiguration.Username,
-                this._notificationConfiguration.Password);
-            
-            mailClient.EnableSsl = true;
-            mailClient.SendAsync(mail, new object());
-
+            smtp.Send(message);
             return Task.CompletedTask;
         }
     }

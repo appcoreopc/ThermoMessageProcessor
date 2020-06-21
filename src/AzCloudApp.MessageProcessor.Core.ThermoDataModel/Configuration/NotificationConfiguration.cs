@@ -11,5 +11,7 @@ namespace AzCloudApp.MessageProcessor.Core.ThermoDataModel.Configuration
         public string Username { get; set; }
 
         public string Password { get; set; }
+
+        public int Port { get; set; }
     }
 }
